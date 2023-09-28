@@ -11,46 +11,58 @@ var btn4 = document.getElementById("button4");
 btn4.setAttribute("id", "btn4");
 var timerCount = 10;
 var timer;
+var x = 0;
 var questions = [
     {
         question: "commonly used data types DO NOT include:",
-        1: "strings",
-        2: "booleans",
-        3: "alerts",
-        4: "numbers"
+        a: "strings",
+        b: "booleans",
+        c: "alerts",
+        d: "numbers"
     },
     {
         question: "the condition in an if / else statement is enclosed within ____.",
-        1: "quotes",
-        2: "curly brackets",
-        3: "parentheses",
-        4: "square brackets"
+        a: "quotes",
+        b: "curly brackets",
+        c: "parentheses",
+        d: "square brackets"
     },
     {
         question: "Arrays in JavaScript can be used to store ____.",
-        1: "numbers and strings",
-        2: "other arrays",
-        3: "booleans",
-        4: "all of the above"
+        a: "numbers and strings",
+        b: "other arrays",
+        c: "booleans",
+        d: "all of the above"
     },
     {
         question: "string values must be enclosed within _____ when being assigned to variables.",
-        1: "quotes",
-        2: "curly brackets",
-        3: "parentheses",
-        4: "square brackets"
+        a: "quotes",
+        b: "curly brackets",
+        c: "parentheses",
+        d: "square brackets"
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        1: "JavaScript",
-        2: "terminal / bash",
-        3: "for loops",
-        4: "console log"
+        a: "JavaScript",
+        b: "terminal / bash",
+        c: "for loops",
+        d: "console log"
     },
 ];
 
+messageEl.textContent = "Welcome to the Quiz!";
+// console.log(questions[4].d);
+
+// for (var i = 0; i < questions.length; i++) {
+//     console.log(questions[i].question);
+// }
+
 // start button is pressed
 startBtn.addEventListener("click", startHandler);
+btn1.addEventListener("click", nextQuestion);
+btn2.addEventListener("click", nextQuestion);
+btn3.addEventListener("click", nextQuestion);
+btn4.addEventListener("click", nextQuestion);
 
 function startHandler(event) {
     event.preventDefault();
@@ -59,12 +71,27 @@ function startHandler(event) {
     startTimer();
 }
 
+// removes hidden elements from button elements, adds hidden to start button, and displays questions and answers
 function displayQuestion() {
     btn1.removeAttribute("hidden");
     btn2.removeAttribute("hidden");
     btn3.removeAttribute("hidden");
     btn4.removeAttribute("hidden");
     startBtn.setAttribute("hidden", "hidden");
+    messageEl.textContent = questions[0].question;
+    btn1.textContent = questions[x].a;
+    btn2.textContent = questions[x].b;
+    btn3.textContent = questions[x].c;
+    btn4.textContent = questions[x].d;
+};
+
+function nextQuestion() {
+    x++;
+    messageEl.textContent = questions[x].question;
+    btn1.textContent = questions[x].a;
+    btn2.textContent = questions[x].b;
+    btn3.textContent = questions[x].c;
+    btn4.textContent = questions[x].d;
 };
 // timer starts
 function startTimer() {
