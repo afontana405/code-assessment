@@ -2,11 +2,11 @@
 
 ## Description
 
-In order to test mine and other's coding knowledge, this assessment was built to qunatify the user's knowledge of basic coding principles.
+In order to test mine and other's coding knowledge, this assessment was built to quantify the user's knowledge of basic coding principles.
 
 ## Usage
 
-![Coding Assessment](./assets/images/my-portfolio.png)
+![Coding Assessment](./assets/images/quiz-assessment-pic.png)
 
 Deployed Website: 
 

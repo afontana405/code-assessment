@@ -4,6 +4,8 @@ var timerEl = document.getElementById("timer");
 var inputEl = document.getElementById("highScoreInput");
 var submitBtn = document.getElementById("submit");
 var highScoreList = document.getElementById("highScoreList");
+var hScore = document.getElementById("hScore");
+localStorage.setItem("highScores", JSON.stringify([]));
 var btn1 = document.getElementById("button1");
 btn1.setAttribute("id", "btn1");
 var btn2 = document.getElementById("button2");
@@ -148,29 +150,33 @@ function gameOver() {
 
 // when highScore is called, need to unhide the input, the submit button, and the high score list
 function highScore() {
+    hScore.removeAttribute("hidden");
     inputEl.removeAttribute("hidden");
     submitBtn.removeAttribute("hidden");
     highScoreList.removeAttribute("hidden");
 };
 
 function addHighScore() {
+    JSON.parse(localStorage.getItem("highScores"));
     // console.log(inputEl.value);
     var newScore = {
         name: inputEl.value,
         score: points
     };
-    localStorage.setItem("highScore", JSON.stringify(newScore));
+    highScores.push(newScore);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
     displayHighScore();
 };
 
 function displayHighScore() {
     // take high scores from local storage and display them as a li element within the high score list
-    var highScores = JSON.parse(localStorage.getItem("highScore"));
-    // console.log(highScores);
-    for (var i = 0; i < highScores.length; i++) {
+    var highScores = JSON.parse(localStorage.getItem("highScores"));
+    console.log(highScores);
+    for (var i = 0; i < 1; i++) {
+        console.log("entered")
         var score = document.createElement("li");
-        newScore.textContent = highScores[i].name + ": " + highScores[i].score;
-        highScoreList.appendChild(newScore);
+        score.textContent = highScores[i].name + ": " + highScores[i].score;
+        highScoreList.appendChild(score);
     };
 //    highScoreList.appendChild(newScore.name);
 };

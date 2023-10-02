@@ -1,9 +1,13 @@
+body {
+    background-color: lightgray;
+}
+
 header {
     display: flex;
     justify-content: right;
 }
 
-#quiz {
+#Quiz {
     background-color: lightgray;
     display: block;
     height: 40%;
@@ -16,11 +20,18 @@ header {
 }
 
 #form {
+    justify-items: center;
     display: block;
     height: 60%;
     width: 100%;
     background-color: blue;
     font-size: 30px;
+}
+
+#message {
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 #choices {
