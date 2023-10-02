@@ -41,3 +41,8 @@ button {
     justify-content: center;
     align-content: center;
 }
+
+ #highScoreImput {
+    height: 40px;
+    width: 100px;
+}
