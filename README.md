@@ -8,7 +8,7 @@ In order to test mine and other's coding knowledge, this assessment was built to
 
 ![Coding Assessment](./assets/images/quiz-assessment-pic.png)
 
-Deployed Website: 
+Deployed Website: https://afontana405.github.io/code-assessment/
 
 ## License
 

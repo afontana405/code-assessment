@@ -5,7 +5,6 @@ var inputEl = document.getElementById("highScoreInput");
 var submitBtn = document.getElementById("submit");
 var highScoreList = document.getElementById("highScoreList");
 var hScore = document.getElementById("hScore");
-localStorage.setItem("highScores", JSON.stringify([]));
 var btn1 = document.getElementById("button1");
 btn1.setAttribute("id", "btn1");
 var btn2 = document.getElementById("button2");
@@ -14,7 +13,7 @@ var btn3 = document.getElementById("button3");
 btn3.setAttribute("id", "btn3");
 var btn4 = document.getElementById("button4");
 btn4.setAttribute("id", "btn4");
-var highScores = JSON.parse(localStorage.getItem("highScore"));
+var highScores = JSON.parse(localStorage.getItem("highScores"));
 var newScore;
 var timerCount = 60;
 var timer;
@@ -58,14 +57,14 @@ var questions = [
     },
 ];
 var answerArray = ["alerts", "parentheses", "all of the above", "quotes", "console log"];
+
+if (!highScores) {
+    localStorage.setItem("highScores", JSON.stringify([]));
+}
+
 messageEl.textContent = "Welcome to the Quiz!";
-// console.log(questions[4].d);
 
-// for (var i = 0; i < questions.length; i++) {
-//     console.log(questions[i].question);
-// }
-
-// start button is pressed
+// event listeners for game to function 
 startBtn.addEventListener("click", startHandler);
 btn1.addEventListener("click", checkAnswer);
 btn2.addEventListener("click", checkAnswer);
@@ -73,6 +72,7 @@ btn3.addEventListener("click", checkAnswer);
 btn4.addEventListener("click", checkAnswer);
 submitBtn.addEventListener("click", addHighScore);
 
+// calls other functions to start the game
 function startHandler(event) {
     event.preventDefault();
     displayQuestion();
@@ -135,9 +135,7 @@ function nextQuestion() {
     };
 };
 
-// questions are presented 1 at a time
-// if wrong answers are given, time is subtracted from the clock
-// if all questions are answered or the timer reaches 0, the game is over
+// ends the game and prepares for the high score screen
 function gameOver() {
     timerEl.textContent = "Game Over";
     btn1.setAttribute("hidden", "hidden");
@@ -156,6 +154,7 @@ function highScore() {
     highScoreList.removeAttribute("hidden");
 };
 
+// lets user submit their score and name to local storage to be pulled later
 function addHighScore() {
     JSON.parse(localStorage.getItem("highScores"));
     // console.log(inputEl.value);
@@ -168,18 +167,16 @@ function addHighScore() {
     displayHighScore();
 };
 
+// displays high score list
 function displayHighScore() {
     // take high scores from local storage and display them as a li element within the high score list
     var highScores = JSON.parse(localStorage.getItem("highScores"));
     console.log(highScores);
-    for (var i = 0; i < 1; i++) {
+    // displays all scores logged in local storage
+    for (var i = 0; i < highScores.length; i++) {
         console.log("entered")
         var score = document.createElement("li");
         score.textContent = highScores[i].name + ": " + highScores[i].score;
         highScoreList.appendChild(score);
     };
-//    highScoreList.appendChild(newScore.name);
 };
-// when the submit button is pressed, the input is stored in local storage
-
-// high score is stored in local storage
